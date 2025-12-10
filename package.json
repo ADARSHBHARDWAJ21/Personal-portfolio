@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "optimize-images": "node scripts/optimize-images.mjs",
-    "prebuild": "npm run optimize-images"
+    "prebuild": "npm run optimize-images",
+    "start": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

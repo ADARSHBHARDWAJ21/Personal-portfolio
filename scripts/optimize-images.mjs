@@ -47,8 +47,8 @@ async function optimizeImage(imagePath, outputPath, format = 'webp') {
 
 async function main() {
   if (!existsSync(GALLERY_DIR)) {
-    console.error(`Gallery directory ${GALLERY_DIR} does not exist`);
-    process.exit(1);
+    console.log(`Gallery directory ${GALLERY_DIR} does not exist. Skipping image optimization.`);
+    return;
   }
   
   try {
