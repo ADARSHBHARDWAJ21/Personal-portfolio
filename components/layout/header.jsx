@@ -2,11 +2,12 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Image } from "@/components/ui/image";
+import { profile } from "@/lib/portfolio-data";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -44,7 +45,7 @@ export function Header() {
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 print:hidden ${
         isScrolled 
           ? "backdrop-blur-xl border-b border-white/10 shadow-2xl" 
           : "backdrop-blur-sm border-b border-white/5"
@@ -67,8 +68,8 @@ export function Header() {
                 <div className="relative h-9 w-9 rounded-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-cyan-400/25 group-hover:shadow-xl">
                   <Image
                     key="header-logo"
-                    src="/adarsh.jpeg"
-                    alt="Adarsh Bhardwaj"
+                    src={profile.avatar}
+                    alt={profile.name}
                     fill
                     className="object-cover"
                     priority
@@ -98,6 +99,7 @@ export function Header() {
               >
                 <Link
                   to={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
                     isActive(item.href)
                       ? "text-cyan-300"
@@ -149,9 +151,11 @@ export function Header() {
             </SheetTrigger>
             <SheetContent 
               side="right" 
-              className="w-full max-w-sm bg-gray-900/95 backdrop-blur-xl border-l border-white/10"
+              className="w-full max-w-sm bg-gray-900/95 backdrop-blur-xl border-l border-white/10 overflow-y-auto print:hidden"
             >
-              <div className="flex flex-col h-full">
+              <SheetTitle className="sr-only">Portfolio navigation</SheetTitle>
+              <SheetDescription className="sr-only">Explore projects, experience, and contact information.</SheetDescription>
+              <div className="flex flex-col min-h-full">
                 {/* Mobile Header */}
                 <div className="p-6 border-b border-white/10">
                   <Link 
@@ -162,8 +166,8 @@ export function Header() {
                     <div className="relative h-10 w-10 rounded-xl overflow-hidden">
                       <Image
                         key="mobile-header-logo"
-                        src="/Abdelmajid.jpeg"
-                        alt="Adarsh Bhardwaj"
+                        src={profile.avatar}
+                        alt={profile.name}
                         fill
                         className="object-cover"
                         priority
@@ -187,6 +191,7 @@ export function Header() {
                     >
                       <Link
                         to={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                         onClick={() => setIsOpen(false)}
                         className={`flex items-center p-4 rounded-xl font-medium transition-all duration-500 group relative overflow-hidden ${
                           isActive(item.href)
@@ -223,4 +228,3 @@ export function Header() {
     </motion.header>
   );
 }
-

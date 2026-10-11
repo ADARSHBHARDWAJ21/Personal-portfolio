@@ -1,5 +1,6 @@
 import { Image } from '@/components/ui/image'
 import { Link } from 'react-router-dom'
+import { profile, projects } from '@/lib/portfolio-data'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -19,14 +20,7 @@ import {
 } from 'lucide-react'
 
 
-const skills = [
-  { category: 'Programming Languages', items: ['Python', 'JavaScript', 'Java'] },
-  { category: 'Databases', items: ['Supabse',  'MongoDB', ] },
-  //{ category: 'Data & Machine Learning', items: ["Apache Spark", "PySpark", "Pandas", "Scikit-learn", "XGBoost", "LightGBM", "ETL Processes"] },
-  //{ category: 'Data Visualization & BI', items: [ "Matplotlib", "Seaborn", "Plotly", "Tableau", "Power BI", "Looker", "Creating Intuitive Dashboards" ] },
-  //{ category: 'Web Scraping & Data Extraction', items: [ "Scrapy", "BeautifulSoup", "Selenium", "Custom Crawlers", "Network-level Analysis", "DOM-based Analysis" ] },
-  //{ category: 'Project Management & Collaboration', items: [ "Agile/Scrum Methodologies", "Cross-functional Team Communication", "Business Requirements Gathering", "Documentation" ] },
-]
+const skills = profile.skillGroups
 
 // const achievements = [
 //   {
@@ -76,7 +70,7 @@ const values = [
   },
   {
     title: 'Collaboration',
-    description: 'Great research is the product of great collaboration. I value open communication, knowledge sharing, and collective problem-solving.',
+    description: 'Good projects benefit from collaboration. I value open communication, knowledge sharing, and collective problem-solving.',
     icon: Users,
     gradient: 'from-pink-500/20 to-violet-500/20',
   },
@@ -84,7 +78,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
+    <div className="min-h-screen bg-background relative isolate overflow-x-hidden">
       {/* 3D Animated Background */}
       <div className="fixed top-0 left-0 w-full h-full -z-10">
         <AnimatedBackground />
@@ -107,13 +101,11 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                  Creating a Safe Future in the Web with<br />
+                  Building Practical Applications with<br />
                   AI & Code
                 </h1>
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  I&apos;m a Computer Science Engineer driven by a passion to create a safe digital world. 
-                  My research focuses on building innovative solutions that bridge the gap between cutting-edge AI and 
-                  real-world applications in web privacy and data protection.
+                  {profile.summary}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg">
@@ -144,7 +136,7 @@ export default function AboutPage() {
                   <div className="flex items-center">
                     <Code className="w-8 h-8 text-primary mr-3" />
                     <div>
-                      <p className="text-2xl font-bold">1+</p>
+                      <p className="text-2xl font-bold">{projects.length}</p>
                       <p className="text-sm text-muted-foreground">Projects</p>
                     </div>
                   </div>
@@ -162,10 +154,10 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-center mb-12">My Journey</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="text-lg leading-relaxed mb-6" style={{ textAlign: 'justify' }}>
-                My journey into computer science began with an insatiable curiosity, a drive to understand technology from the ground up. This passion led me to master the fundamentals of javascript and dive into the complex worlds of webdevlopment. Those early years of exploration and trial-and-error laid the foundation for my entire career, sparking a lifelong dedication to solving complex technical problems.
+                I’m studying Computer Science and Engineering with a specialization in Artificial Intelligence and Data Science at LNCT, Bhopal. Through hands-on projects, I’m building experience with web interfaces, backend APIs, databases, and machine learning.
               </p>
               <p className="text-lg leading-relaxed" style={{ textAlign: 'justify' }}>
-                Today, I continue to push the boundaries of what is possible with code. My work is driven by the mission to craft a more secure and transparent digital future, always staying curious about emerging technologies and new challenges.
+                My recent work includes PramaanSetu, PackZen AI, and FinPilot. I share these projects on GitHub, alongside earlier web and mobile applications, and continue learning through building and experimenting.
               </p>  
             </div>
           </div>
@@ -288,7 +280,7 @@ export default function AboutPage() {
             <div className="flex justify-center gap-8 text-sm text-muted-foreground">
               <div className="flex items-center">
                 <Globe className="w-4 h-4 mr-2" />
-                <span>5 Languages</span>
+                <span>Web & AI Projects</span>
               </div>
               <div className="flex items-center">
                 <BookOpen className="w-4 h-4 mr-2" />
@@ -296,7 +288,7 @@ export default function AboutPage() {
               </div>
               <div className="flex items-center">
                 <Users className="w-4 h-4 mr-2" />
-                <span>Open Source Contributor</span>
+                <span>Project Builder</span>
               </div>
             </div>
           </div>

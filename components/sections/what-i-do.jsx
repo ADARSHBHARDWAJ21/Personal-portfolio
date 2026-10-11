@@ -4,18 +4,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { BrainCircuit, ShieldCheck, Cloud, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Services updated to highlight research expertise in AI, privacy, and data-driven systems.
 const services = [
     {
         icon: BrainCircuit,
-        title: "AI & Generative Models",
+        title: "AI & Machine Learning",
         description:
-            "Conducting advanced research on Large Language Models (LLMs), privacy-preserving AI, and generative systems. I focus on developing context-aware, ethical, and high-performing AI solutions.",
+            "Exploring machine learning through Python projects and adding practical AI features to applications, including finance assistance and packaging-material recommendations.",
         features: [
-            "LLM Fine-Tuning & Evaluation",
-            "Privacy-Preserving Machine Learning",
-            "Natural Language Processing (NLP)",
-            "Generative AI Research & Applications",
+            "Python & scikit-learn",
+            "Gemini API Integration",
+            "Recommendation Workflows",
+            "Data Analysis & Notebooks",
         ],
         color: "text-green-400",
         bgColor: "bg-green-400/10",
@@ -23,14 +22,14 @@ const services = [
     },
     {
         icon: ShieldCheck,
-        title: "Web Privacy & Data Protection",
+        title: "Frontend Development",
         description:
-            "Designing systems to detect, analyze, and mitigate privacy risks in web environments. I focus on safeguarding sensitive data while ensuring compliance and user transparency.",
+            "Building web interfaces with React, Next.js, and Tailwind CSS, connecting user workflows to data and APIs across my portfolio projects.",
         features: [
-            "Ad & Tracker Detection",
-            "Network-Level & DOM Analysis",
-            "Privacy-Focused Data Pipelines",
-            "Data Protection & Compliance",
+            "React & Next.js",
+            "Tailwind CSS Interfaces",
+            "Forms & Data Dashboards",
+            "React Native & Expo",
         ],
         color: "text-blue-400",
         bgColor: "bg-blue-400/10",
@@ -38,14 +37,14 @@ const services = [
     },
     {
         icon: Cloud,
-        title: "Data Engineering & Research Infrastructure",
+        title: "Backend Development",
         description:
-            "Building scalable data pipelines and processing workflows to support advanced AI research and analytics. I integrate batch and real-time data systems to enable reproducible and efficient experiments.",
+            "Developing application APIs and database-backed workflows with Node.js, Express, FastAPI, and Supabase, from user authentication to saved project data.",
         features: [
-            "ETL & Data Pipeline Design",
-            "Batch & Real-Time Workflows",
-            "Data Cleaning & Quality Assurance",
-            "Research-Ready Data Warehouses",
+            "Node.js & Express APIs",
+            "Python & FastAPI",
+            "PostgreSQL & Supabase",
+            "Authentication & Role-Based Workflows",
         ],
         color: "text-purple-400",
         bgColor: "bg-purple-400/10",
@@ -71,9 +70,9 @@ export function WhatIDo() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        My Research{" "}
+                        What I{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 animate-gradient">
-                            Expertise
+                            Build
                         </span>
                     </motion.h2>
                     <motion.p
@@ -83,7 +82,7 @@ export function WhatIDo() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         viewport={{ once: true }}
                     >
-                        I conduct advanced AI and data-driven research, focusing on privacy, ethical AI, and generative models, delivering reproducible results and cutting-edge solutions.
+                        I build full-stack applications and keep learning through hands-on work in web development, machine learning, and practical tools.
                     </motion.p>
                 </motion.div>
 

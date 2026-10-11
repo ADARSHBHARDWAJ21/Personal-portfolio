@@ -1,127 +1,48 @@
-# Portfolio Website - Adarsh Bhardwaj
+# Adarsh Bhardwaj — Personal Portfolio
 
-A modern, responsive portfolio website built with React, Vite, and Tailwind CSS. Features include 3D animated backgrounds, smooth animations, and a fully responsive design.
+A responsive React 19 and Vite portfolio showcasing full-stack development, applied AI, and engineering studies at LNCT, Bhopal. The original layout, dark cyan and violet theme, coding GIF, 3D animated backgrounds, section animations, and floating quick-action widget are preserved.
 
-## 🚀 Technologies
-
-- **React 19** - UI library
-- **Vite** - Build tool and dev server
-- **React Router** - Client-side routing
-- **Tailwind CSS** - Utility-first CSS framework
-- **Three.js & React Three Fiber** - 3D graphics and animations
-- **Framer Motion** - Animation library
-- **Radix UI** - Accessible component primitives
-
-## 📦 Installation
+## Run locally
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## 🌐 Deployment
+Open http://localhost:3000. To create the production build, run `npm run build`; output is written to `dist/`. Run `npm run preview` to preview that build.
 
-### Deploy to Vercel
+## Portfolio content
 
-This project is configured for easy deployment on Vercel:
+The shared profile, skills, education, certifications, and project records live in `lib/portfolio-data.js`. The original project collection and card layouts display six updated projects with verified descriptions, technologies, source links, and available live demos.
 
-1. **Push to GitHub**: Ensure your code is pushed to GitHub
-   ```bash
-   git add .
-   git commit -m "Ready for deployment"
-   git push origin main
-   ```
+Selected projects:
 
-2. **Deploy on Vercel**:
-   - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your GitHub repository
-   - Vercel will auto-detect Vite configuration
-   - Click "Deploy"
+- PramaanSetu — Legal Metrology verification workflows and certificates.
+- PackZen AI — food-packaging recommendations and shelf-life planning.
+- FinPilot — personal finance and salary-tax planning with a Gemini copilot.
+- Go For It — personalized AI travel itineraries.
+- Todo App — Expo and React Native task organizer.
+- Uplift Marketing — React and Vite marketing website.
 
-3. **Automatic Deployments**: 
-   - Every push to `main` branch will trigger a new deployment
-   - Preview deployments are created for pull requests
+Repository links, technology choices, and live demo links are based on public source research. See `docs/profile-sources.md` for evidence and limitations from 11 October 2026. Education dates and the phone number were retained from the existing portfolio.
 
-The `vercel.json` file is pre-configured with:
-- Build command: `npm run build`
-- Output directory: `dist`
-- SPA routing rewrites
-- Optimized caching headers
+## Pages and behavior
 
-### Manual Build
+- Home, Projects, individual project details, About, Experience & Learning, Contact, and Resume.
+- Original homepage section order, coding animation, lazy-loaded sections, 3D backgrounds, and floating quick actions.
+- Accessible mobile navigation, shared page titles, and anchor navigation.
+- Resume supports the browser’s Print / Save PDF action.
+- Contact opens an email draft; the visitor completes sending in their email app.
+- Original theme, typography, buttons, badges, project collection layout, and card styling, with updated profile and project content.
 
-```bash
-npm run build
-# Output will be in /dist directory
-```
+## Deployment
 
-## 📁 Project Structure
+The current production target is [adarshbhardwajj.netlify.app](https://adarshbhardwajj.netlify.app/). Netlify uses `npm run build` and publishes `dist/`; `public/_redirects` preserves direct links to single-page application routes. The existing Git-linked Netlify project also supports deployment of a finished local build through the Netlify CLI. See `docs/netlify-deployment.md` for the update steps.
 
-```
-├── app/                  # Page components
-│   ├── about/           # About page
-│   ├── contact/         # Contact page
-│   ├── experience/      # Experience & skills page
-│   └── projects/        # Projects showcase
-├── components/          # Reusable components
-│   ├── 3d/             # 3D animated backgrounds
-│   ├── layout/         # Layout components
-│   ├── sections/       # Page sections
-│   └── ui/             # UI components
-├── public/             # Static assets
-├── src/                # Entry point and App
-└── lib/                # Utilities
-```
+## Author
 
-## 🎨 Features
+Adarsh Bhardwaj · Bhopal, India
 
-- ✨ Modern, responsive design
-- 🎭 Dark theme support
-- 🎬 Smooth animations and transitions
-- 🌟 3D interactive backgrounds
-- 📱 Fully mobile-responsive
-- ⚡ Optimized performance
-- 🔍 SEO-friendly
-- ♿ Accessible components
+[GitHub](https://github.com/ADARSHBHARDWAJ21) · [LinkedIn](https://www.linkedin.com/in/adarsh-bhardwaj-92072b316/)
 
-## 📝 Environment Variables
-
-No environment variables are required for basic deployment. All configuration is in the codebase.
-
-## 🛠️ Development
-
-```bash
-# Run development server
-npm run dev
-
-# Lint code
-npm run lint
-
-# Optimize images before build
-npm run optimize-images
-```
-
-## 📄 License
-
-Private project - All rights reserved.
-
-## 👤 Author
-
-**Adarsh Bhardwaj**
-- Email: adarshbhardwaj1919@gmail.com
-- GitHub: [@ADARSHBHARDWAJ21](https://github.com/ADARSHBHARDWAJ21)
-- LinkedIn: [adarsh-bhardwaj-92072b316](https://www.linkedin.com/in/adarsh-bhardwaj-92072b316/)
-
----
-
-Built with ❤️ using React and Vite
+adarshbhardwaj1919@gmail.com

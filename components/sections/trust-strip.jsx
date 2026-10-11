@@ -1,60 +1,23 @@
 "use client";
 
-import { Star, TrendingUp, Users, GraduationCap, Cloud, BrainCircuit } from "lucide-react";
+import { TrendingUp, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
+import { profile, projects } from "@/lib/portfolio-data";
 
-// Trust elements updated to reflect your new focus area
 const trustElements = [
-    // {
-    //     name: "5-Star Rated Freelancer",
-    //     icon: Star,
-    //     description:
-    //         "Achieved a perfect 5.0-star rating across 46 reviews by delivering high-quality code and clear communication.",
-    //     color: "text-yellow-400",
-    //     bgColor: "bg-yellow-400/10",
-    //     borderColor: "border-yellow-400/20",
-    // },
     {
-        name: "1+ Successful Projects",
+        name: `${projects.length} Portfolio Projects`,
         icon: TrendingUp,
-        description: "Architected and delivered backend systems and REST APIs for over 1 freelance projects for global clients.",
+        description: "Building and sharing web, mobile, and AI-assisted applications, with project details and source code available to explore.",
         color: "text-purple-400",
         bgColor: "bg-purple-400/10",
         borderColor: "border-purple-400/20",
     },
-    // {
-    //     name: "Cloud & DevOps Expertise",
-    //     icon: Cloud,
-    //     description:
-    //         "Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability and reduce deployment times.",
-    //     color: "text-cyan-400",
-    //     bgColor: "bg-cyan-400/10",
-    //     borderColor: "border-cyan-400/20",
-    // },
-    // {
-    //     // --- THIS SECTION HAS BEEN UPDATED ---
-    //     name: "LLM & RAG Specialist",
-    //     icon: BrainCircuit,
-    //     description:
-    //         "Developing advanced AI systems using Large Language Models (LLMs), Retrieval-Augmented Generation, and fine-tuning for intelligent, context-aware applications.",
-    //     color: "text-green-400",
-    //     bgColor: "bg-green-400/10",
-    //     borderColor: "border-green-400/20",
-    // },
-    // {
-    //     name: "Trusted by Global Clients",
-    //     icon: Users,
-    //     description:
-    //         "Proven track record of collaborating with and delivering solutions for clients from around the world via Freelancer.com.",
-    //     color: "text-blue-400",
-    //     bgColor: "bg-blue-400/10",
-    //     borderColor: "border-blue-400/20",
-    // },
     {
         name: "LNCT Engineering Student",
         icon: GraduationCap,
         description:
-            "Second-year student pursuing an Engineering Degree in Ai and Data science from the Lakshmi Narain College of Technology",
+            `${profile.education[0].degree} student at ${profile.education[0].school}, ${profile.education[0].location}.`,
         color: "text-accent",
         bgColor: "bg-accent/10",
         borderColor: "border-accent/20",
@@ -102,9 +65,9 @@ export function TrustStrip() {
                             transition={{ duration: 0.6, delay: 0.4 }}
                             viewport={{ once: true }}
                         >
-                            I am committed to delivering not just code, but value. My work is
-                            built on a foundation of reliability, quality, and a proven ability
-                            to solve complex problems with data-driven results.
+                            I learn by building practical projects, working through problems,
+                            and improving each application. Explore my work to see the
+                            technologies and ideas behind it.
                         </motion.p>
                     </div>
 

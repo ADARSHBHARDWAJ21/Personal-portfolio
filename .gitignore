@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/.npm-cache
+/.netlify
 /.pnp
 .pnp.*
 .yarn/*
@@ -39,8 +41,11 @@ yarn-error.log*
 
 # build output
 /dist
+/docs/netlify-deploy.zip
+/docs/previews/
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.restoration/
 .env

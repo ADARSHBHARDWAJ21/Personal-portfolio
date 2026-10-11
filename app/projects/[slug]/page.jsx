@@ -6,38 +6,16 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { motion } from 'framer-motion'
 import { Image } from '@/components/ui/image'
 
-const projects = {
-  'go-for-it': {
-    slug: 'go-for-it',
-    title: 'Go For it',
-    description: 'Smart AI Itineraries, Hassle-free rides, Meals, and stays. We handle the details, You enjoy the Journey.',
-    longDescription: 'A comprehensive travel planning service that simplifies the entire travel experience. Go For it offers AI-powered itinerary planning, seamless booking for flights, hotels, and train tickets, along with 24/7 support. The platform features over 200 destinations and instant booking capabilities, making travel planning effortless and enjoyable.',
-    category: 'Travel & Tourism',
-    technologies: ['React', 'Next.js', 'AI/ML', 'Travel API'],
-    features: [
-      'AI Trip Planner',
-      'Book Flight',
-      'Find Hotel',
-      'Book Train Tickets',
-      '200+ Destinations',
-      '24/7 Support',
-      'Instant Booking'
-    ],
-    image: '/projectimage/goforit.png',
-    liveUrl: 'https://goforittt.netlify.app/',
-    githubUrl: 'https://github.com/ADARSHBHARDWAJ21/Go-for-it-updatedd',
-    featured: true
-  }
-}
+import { projects } from '@/lib/portfolio-data'
 
 export default function ProjectPage() {
   const { slug } = useParams()
-  const project = projects[slug]
+  const project = projects.find((item) => item.slug === slug)
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-background relative overflow-x-hidden">
-        <div className="fixed top-0 left-0 w-full h-full -z-10">
+      <div className="min-h-screen bg-background relative isolate overflow-x-hidden">
+        <div aria-hidden="true" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none print:hidden">
           <AnimatedBackground />
         </div>
         <div className="relative z-10">
@@ -64,9 +42,9 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
+    <div className="min-h-screen bg-background relative isolate overflow-x-hidden">
       {/* 3D Animated Background */}
-      <div className="fixed top-0 left-0 w-full h-full -z-10">
+      <div aria-hidden="true" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none print:hidden">
         <AnimatedBackground />
       </div>
 
@@ -93,7 +71,8 @@ export default function ProjectPage() {
                 <div className="relative w-full h-64 md:h-96 overflow-hidden bg-muted/20">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.imageAlt || project.title}
+                    style={{ objectPosition: project.imagePosition || 'top' }}
                     className="w-full h-full object-cover"
                     fill
                   />
@@ -139,7 +118,7 @@ export default function ProjectPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-4 pt-4">
+                <div className="flex flex-wrap gap-4 pt-4">
                   {project.liveUrl && project.liveUrl !== '#' && (
                     <Button asChild size="lg">
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { profile } from "@/lib/portfolio-data";
 
 export function CTABand() {
   return (
@@ -77,10 +78,9 @@ export function CTABand() {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Let&apos;s collaborate to bring your vision to life. From concept to deployment, 
-              I deliver{" "}
-              <span className="text-foreground font-semibold">high-quality software solutions</span>{" "}
-              that exceed expectations and drive real business results.
+              Let&apos;s collaborate to bring your idea to life. I enjoy building{" "}
+              <span className="text-foreground font-semibold">practical web applications</span>{" "}
+              and learning through projects that solve real problems.
             </motion.p>
           </motion.div>
 
@@ -134,11 +134,11 @@ export function CTABand() {
           >
             <p className="text-sm text-muted-foreground">
               Have a quick question?{" "}
-              <a href="mailto:adarshbhardwaj1919@gmail.com" className="text-primary underline hover:text-accent transition-colors">
+              <a href={`mailto:${profile.email}`} className="text-primary underline hover:text-accent transition-colors">
                 Email me directly
               </a>{" "}
               or connect on{" "}
-              <a href="https://www.linkedin.com/in/adarsh-bhardwaj-92072b316/" className="text-primary underline hover:text-accent transition-colors">
+              <a href={profile.linkedin} className="text-primary underline hover:text-accent transition-colors">
                 LinkedIn
               </a>.
             </p>

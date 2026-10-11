@@ -7,17 +7,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Image } from "@/components/ui/image";
 
-const featuredProjects = [
-    {
-        slug: 'go-for-it',
-        title: 'Go For it',
-        description: 'Smart AI Itineraries, Hassle-free rides, Meals, and stays. We handle the details, You enjoy the Journey.',
-        category: 'Travel & Tourism',
-        technologies: ['React', 'Next.js', 'AI/ML'],
-        image: '/projectimage/goforit.png',
-        featured: true
-    }
-];
+import { projects } from '@/lib/portfolio-data';
+
+const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
 
 export function FeaturedProjects() {
     return (
@@ -71,7 +63,8 @@ export function FeaturedProjects() {
                                     <div className="relative w-full h-48 overflow-hidden bg-muted/20">
                                         <Image
                                             src={project.image}
-                                            alt={project.title}
+                                            alt={project.imageAlt || project.title}
+                                            style={{ objectPosition: project.imagePosition || 'top' }}
                                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                                             fill
                                         />

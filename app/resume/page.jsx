@@ -2,6 +2,7 @@
 'use client'
 
 import { Link } from 'react-router-dom'
+import { profile, projects } from '@/lib/portfolio-data'
 import { useEffect } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -23,48 +24,17 @@ import {
 } from 'lucide-react'
 
 const personalInfo = {
-  name: 'Adarsh Bhardwaj',
+  ...profile,
   title: 'Full Stack Developer | B.Tech CSE (AI & DS) Student',
-  email: 'adarshbhardwaj1919@gmail.com',
-  phone: '+91 8349859827',
-  location: 'Bhopal, India',
-  linkedin: 'linkedin.com/in/adarsh-bhardwaj-92072b316',
-  github: 'github.com/ADARSHBHARDWAJ21',
+  linkedin: profile.linkedin.replace('https://www.', '').replace(/\/$/, ''),
+  github: profile.github.replace('https://', '').replace(/\/$/, ''),
 }
-
-const professionalSummary = `I’m a 2nd-year B.Tech Computer Science and Engineering student specializing in Artificial Intelligence & Data Science at LNCT, Bhopal. Passionate about Full Stack development, problem-solving and continuously learning modern technologies.`
-
-// Leave experiences empty for now
-const experience = []
-
-const education = [
-  {
-    degree: 'B.Tech in Computer Science & Engineering (AI & DS)',
-    school: 'Lakshmi Narain College of Technology (LNCT)',
-    location: 'Bhopal, India',
-    period: '2024 - 2028',
-    details: ['2nd Year Student'],
-  },
-  {
-    degree: 'Higher Secondary (Class 11-12) PCM',
-    school: 'Delhi Public School, Vindhyanagar',
-    location: 'Singrauli, India',
-    period: '2022 - 2024',
-    details: ['Focused on Mathematics, Physics & Computer Science'],
-  },
-]
-
-// Skills cleaned & corrected
-const skills = {
-  'Programming Languages': ['Python', 'JavaScript', 'C', 'C++', 'SQL'],
-  'Frontend Development': ['HTML', 'CSS', 'Tailwind CSS', 'React', 'Next.js'],
-  'Backend & APIs': ['Node.js', 'Express.js', 'REST APIs'],
-  'Databases': ['MongoDB', 'Supabase', 'Firebase'],
-  'Tools & Workflow': ['Git', 'GitHub', 'VS Code', 'Postman'],
-}
-
-const certifications = []
-const achievements = []
+const professionalSummary = profile.summary
+const experience = projects.filter((project) => project.featured).slice(0, 3)
+const education = profile.education
+const skills = Object.fromEntries(profile.skillGroups.map((group) => [group.category, group.items]))
+const certifications = profile.certifications.map((certificate) => certificate.title + ' — ' + certificate.issuer + ' · ' + certificate.date)
+const achievements = projects.filter((project) => project.status.startsWith('SIH')).map((project) => project.title + ' — ' + project.status)
 
 export default function ResumePage() {
   useEffect(() => {
@@ -72,7 +42,7 @@ export default function ResumePage() {
   }, [])
 
   return (
-    <div className="min-h-screen relative bg-transparent print:bg-white">
+    <div className="min-h-screen relative isolate bg-transparent print:bg-white">
       <AnimatedBackground variant="resume" />
 
       <div className="container mx-auto px-4 py-8 relative z-10">
@@ -118,11 +88,18 @@ export default function ResumePage() {
 
               {/* === EXPERIENCE === */}
               <section className="mb-8">
-                <h3 className="text-lg font-semibold mb-4 flex items-center"><Building className="w-5 h-5 mr-2 text-primary" />Experience</h3>
+                <h3 className="text-lg font-semibold mb-4 flex items-center"><Building className="w-5 h-5 mr-2 text-primary" />Project Experience</h3>
 
-                {experience.length === 0 && (
-                  <p className="text-sm italic text-muted-foreground">Add Internships / Freelancing / Projects here</p>
-                )}
+                {experience.map((project) => (
+                  <div key={project.slug} className="mb-6">
+                    <h4 className="text-base font-bold">{project.title}</h4>
+                    <p className="text-xs text-muted-foreground">{project.category} — {project.year}</p>
+                    <p className="text-sm text-muted-foreground mt-2 mb-2">{project.description}</p>
+                    <ul className="text-sm list-disc ml-6">{project.features.slice(0, 2).map((feature) => <li key={feature}>{feature}</li>)}</ul>
+                    <p className="text-xs text-muted-foreground mt-2">{project.technologies.join(' · ')}</p>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">View project on GitHub</a>
+                  </div>
+                ))}
               </section>
 
               <Separator className="my-6" />
@@ -183,7 +160,7 @@ export default function ResumePage() {
 
               {/* === ACHIEVEMENTS === */}
               <section>
-                <h3 className="text-lg font-semibold mb-3 flex items-center"><Star className="w-5 h-5 mr-2 text-primary" />Achievements</h3>
+                <h3 className="text-lg font-semibold mb-3 flex items-center"><Star className="w-5 h-5 mr-2 text-primary" />Hackathon Projects</h3>
                 {achievements.length === 0 ? (
                   <p className="text-sm italic text-muted-foreground">Add Hackathons / Competition results here</p>
                 ) : (

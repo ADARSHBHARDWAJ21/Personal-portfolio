@@ -5,15 +5,16 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Image } from "@/components/ui/image";
+import { profile } from "@/lib/portfolio-data";
 
 // Tech stack updated to reflect your core skills listed in the resume
-const techStack = ["Python", "JavaScript", "Mongodb", "Supabase", "java"];
+const techStack = ["Python", "JavaScript", "MongoDB", "Supabase", "Java"];
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding">
       {/* Background Pattern */}
-      <div className="absolute inset-0 -z-10 bg-background">
+      <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -49,10 +50,10 @@ export function HeroSection() {
                 transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
               >
                 <span className="block">
-                  Hi, I&apos;m Adarsh Bhardwaj.
+                  Hi, I&apos;m {profile.name}.
                 </span>
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 animate-gradient">
-                  Full Stack Developer
+                  {profile.title}
                 </span>
               </motion.h1>
               <motion.p

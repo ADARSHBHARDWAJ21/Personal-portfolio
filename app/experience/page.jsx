@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { profile, projects } from '@/lib/portfolio-data'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -17,42 +18,16 @@ import {
 } from 'lucide-react'
 
 
-const workExperience = [
-  // {
-  //   title: 'Gen AI Engineer',
-  //   company: 'Freelancer.com',
-  //   location: 'Remote',
-  //   period: 'Nov 2022 - Present',
-  //   type: 'Freelance',
-  //   description: "Delivering high-quality AI-powered applications and privacy-focused solutions for diverse clients, consistently achieving top ratings and 100% on-time, on-budget project completion.",
-  //   achievements: [
-  //     "Delivered 45+ client projects leveraging Generative AI and data-driven solutions, consistently aligning with client goals and business needs",
-  //     "Developed AI-powered applications and privacy-focused systems that enhanced user experience while safeguarding sensitive data",
-  //     "Earned a perfect 5.0-star rating across 48 client reviews by combining technical excellence with clear, reliable communication",
-  //     "Achieved 100% on-time delivery and 100% on-budget project completion, ensuring strong client trust and repeat collaborations"
-  //   ],
-  //   technologies: ['Python', 'PyTorch', 'TensorFlow', 'Hugging Face Transformers', 'LangChain', 'OpenAI GPT APIs', 'Stable Diffusion', 'FastAPI', 'Docker', 'Git']
-  // },
-  // {
-  //   title: 'Research Engineer',
-  //   company: 'College of Computing - Mohammed VI Polytechnic University',
-  //   location: 'Rabat, Morocco',
-  //   period: 'Jan 2025 - Sept 2025',
-  //   type: 'Internship',
-  //   description: "Designing and implementing scalable data pipelines and privacy-focused systems for ad detection across 100K+ websites, integrating ML workflows, OCR, and real-time analysis to enhance user transparency and block targeted ads.",
-  //   achievements: [
-  //     "Designed and built a scalable data pipeline to support ad detection and privacy-focused analysis from 100K+ websites scraped via a custom crawler based on Tranco lists",
-  //     "Engineered robust ETL processes to ingest, clean, and enrich web data using automated classification across 12 categories and 35 subcategories",
-  //     "Collected and structured network-level and DOM-based signals to identify ad-related elements using community filter lists and advanced scraping methods",
-  //     "Extracted and stored 'Why This Ad' metadata at scale to analyze targeting strategies, contributing to user transparency on ad personalization",
-  //     "Built a semi-automated data cleaning framework to handle inconsistencies and noise, improving data quality for downstream processing and modeling",
-  //     "Integrated OCR capabilities for extracting text from ad images, enriching feature sets for analysis",
-  //     "Developed batch and real-time processing workflows to support machine learning pipelines for ad classification and detection",
-  //     "Contributed to the creation of a Chrome extension prototype backed by engineered data flows and inference pipelines, enabling real-time blocking of targeted ads"
-  //   ],
-  //   technologies: ['Python', 'Apache Spark', 'ETL', 'Machine Learning', 'OCR', 'Web Scraping', 'Custom Crawlers', 'Data Cleaning', 'Chrome Extensions', 'Real-time Processing']
-  // },
-]
+const workExperience = projects.filter((project) => project.featured).map((project) => ({
+  title: project.title,
+  company: project.category,
+  location: 'Portfolio project',
+  period: project.year,
+  type: project.status,
+  description: project.longDescription,
+  achievements: project.features,
+  technologies: project.technologies,
+}))
 
 const education = [
   {
@@ -61,9 +36,9 @@ const education = [
     location: 'Bhopal, India',
     period: '2024 - 2028',
     status: 'In Progress',
-    description: 'Pursuing Bachelor of Technology in Computer Science and Engineering with specialization in Artificial Intelligence & Data Science. Currently in 2nd year, focusing on building strong foundations in AI, machine learning, and full-stack development.',
+    description: 'Pursuing Bachelor of Technology in Computer Science and Engineering with specialization in Artificial Intelligence & Data Science. Focusing on building strong foundations in AI, machine learning, and full-stack development.',
     achievements: [
-      '2nd Year Student actively learning and applying AI & Data Science concepts',
+      'Learning and applying AI & Data Science concepts',
       'Working on various full-stack projects to enhance practical skills',
       'Continuously learning modern technologies and frameworks',
     ],
@@ -75,9 +50,9 @@ const education = [
     location: 'Singrauli, India',
     period: '2022 - 2024',
     status: 'Completed',
-    description: 'Completed higher secondary education with focus on Mathematics, Physics, and Computer Science. This rigorous academic program built a strong foundation in analytical thinking, problem-solving, and core scientific principles.',
+    description: 'Completed higher secondary education with focus on Mathematics, Physics, and Chemistry. This rigorous academic program built a strong foundation in analytical thinking, problem-solving, and core scientific principles.',
     achievements: [
-      'Successfully completed rigorous coursework in Mathematics, Physics, and Computer Science',
+      'Completed higher secondary coursework in Mathematics, Physics, and Chemistry',
       'Developed strong problem-solving and analytical thinking skills',
       'Built a solid foundation for engineering studies',
     ],
@@ -127,7 +102,7 @@ const skills = {
 
 export default function ExperiencePage() {
   return (
-    <div className="min-h-screen bg-background relative overflow-x-hidden">
+    <div className="min-h-screen bg-background relative isolate overflow-x-hidden">
       {/* 3D Animated Background */}
       <div className="fixed top-0 left-0 w-full h-full -z-10">
         <AnimatedBackground />
@@ -139,17 +114,16 @@ export default function ExperiencePage() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Professional Experience
+                Project Experience
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              A comprehensive overview of my journey in AI, software engineering, and continuous learning. 
-              From academic excellence to real-world impact, each experience has shaped my expertise.
+              An overview of my full-stack and AI projects, engineering studies, and continuous learning.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
                 <Link to="/resume">
                   <Download className="w-4 h-4 mr-2" />
-                  Download Resume
+                  View Resume
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
@@ -169,7 +143,7 @@ export default function ExperiencePage() {
             <Tabs defaultValue="experience" className="w-full">
               <div className="flex justify-center mb-12">
                 <TabsList className="grid w-full max-w-md grid-cols-4">
-                  <TabsTrigger value="experience">Work</TabsTrigger>
+                  <TabsTrigger value="experience">Projects</TabsTrigger>
                   <TabsTrigger value="education">Education</TabsTrigger>
                   <TabsTrigger value="certifications">Certs</TabsTrigger>
                   <TabsTrigger value="skills">Skills</TabsTrigger>
@@ -179,7 +153,7 @@ export default function ExperiencePage() {
               {/* Work Experience Tab */}
               <TabsContent value="experience">
                 <div className="space-y-8">
-                  <h2 className="text-3xl font-bold text-center mb-8">Work Experience</h2>
+                  <h2 className="text-3xl font-bold text-center mb-8">Project Experience</h2>
                   {workExperience.map((job, index) => (
                     <Card key={index} className="overflow-hidden">
                       <CardHeader className="pb-4">
@@ -210,7 +184,7 @@ export default function ExperiencePage() {
                         <p className="text-muted-foreground">{job.description}</p>
                         
                         <div>
-                          <h4 className="font-semibold mb-3">Key Achievements</h4>
+                          <h4 className="font-semibold mb-3">Project Features</h4>
                           <ul className="space-y-2">
                             {job.achievements.map((achievement, idx) => (
                               <li key={idx} className="flex items-start">
@@ -318,8 +292,8 @@ export default function ExperiencePage() {
                                 {cert.date}
                               </div>
                             </div>
-                            <Button variant="outline" size="sm">
-                              <ExternalLink className="w-4 h-4" />
+                            <Button variant="outline" size="sm" asChild>
+                              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label={"View " + cert.title + " on LinkedIn"}><ExternalLink className="w-4 h-4" /></a>
                             </Button>
                           </div>
                         </CardHeader>
@@ -349,7 +323,7 @@ export default function ExperiencePage() {
                     <div>
                       <div className="flex items-center mb-6">
                         <Code className="w-6 h-6 text-primary mr-3" />
-                        <h3 className="text-2xl font-bold">Technical Skills</h3>
+                        <h3 className="text-2xl font-bold">Technical Skills · Self-assessed</h3>
                       </div>
                       <div className="space-y-4">
                         {skills.technical.map((skill) => (
@@ -373,7 +347,7 @@ export default function ExperiencePage() {
                     <div>
                       <div className="flex items-center mb-6">
                         <Users className="w-6 h-6 text-primary mr-3" />
-                        <h3 className="text-2xl font-bold">Soft Skills</h3>
+                        <h3 className="text-2xl font-bold">Soft Skills · Self-assessed</h3>
                       </div>
                       <div className="space-y-4">
                         {skills.soft.map((skill) => (
@@ -423,10 +397,10 @@ export default function ExperiencePage() {
           <div className="max-w-3xl mx-auto">
             <Brain className="w-12 h-12 text-primary mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Ready to Leverage This Experience?
+              Let’s Build on This Experience
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              With a strong foundation in AI, data privacy, and advanced research methodologies, and proven results across multiple projects, I am ready to contribute cutting-edge solutions to your next research challenge.
+              I’m developing my skills through full-stack and AI projects and would welcome opportunities to learn, collaborate, and contribute to practical applications.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">

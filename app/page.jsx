@@ -3,6 +3,7 @@
 import { lazy, Suspense } from "react"
 import { HeroSection } from "@/components/sections/hero" // Keep hero section for immediate loading
 import { AnimatedBackground } from "@/components/3d/animated-background"
+import { profile } from "@/lib/portfolio-data"
 
 // Lazy load non-critical sections
 const TrustStrip = lazy(() => import("@/components/sections/trust-strip").then(mod => ({ default: mod.TrustStrip })))
@@ -13,50 +14,36 @@ const CTABand = lazy(() => import("@/components/sections/cta-band").then(mod => 
 const FloatingActionButton = lazy(() => import("@/components/ui/floating-action-button").then(mod => ({ default: mod.FloatingActionButton })))
 
 export default function HomePage() {
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    jobTitle: profile.title,
+    url: profile.website,
+    image: profile.avatar,
+    description: profile.summary,
+    email: `mailto:${profile.email}`,
+    sameAs: [profile.linkedin, profile.github],
+    knowsAbout: profile.skillGroups.flatMap(group => group.items),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: profile.location.split(',')[0],
+      addressCountry: "IN"
+    }
+  }
   return (
     <>
       {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Adarsh Bhardwaj",
-            "jobTitle": "Full Stack Developer",
-            "url": "https://adarshbhardwaj.dev",
-            "logo": "https://adarshbhardwaj.dev/logo.png",
-            "image": "https://adarshbhardwaj.dev/og-image.jpg",
-            "description": "Portfolio of Adarsh Bhardwaj, a passionate Full Stack Developer specializing in modern web technologies, building scalable applications with React, Next.js, and Python. Explore case studies, experience, and get in touch.",
-            "email": "mailto:adarshbhardwaj1919@gmail.com",
-            "sameAs": [
-              "https://www.linkedin.com/in/adarsh-bhardwaj-92072b316/",
-              "https://github.com/ADARSHBHARDWAJ21"
-            ],
-            "knowsAbout": [
-              "Software Engineering",
-              "Backend Development", 
-              "AI & Machine Learning",
-              "Python",
-              "PhD Candidate",
-              "PhD",
-              "Research",
-              "Web Privacy",
-              "Data Protection",
-              "Data"
-            ],
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Rabat",
-              "addressCountry": "Morocco"
-            }
-          })
+          __html: JSON.stringify(person).replace(/</g, '\\u003c')
         }}
       />
 
-      <main className="min-h-screen relative overflow-x-hidden">
+      <div className="min-h-screen relative isolate overflow-x-hidden">
         {/* 3D Animated Background */}
-        <div className="fixed top-0 left-0 w-full h-full -z-10">
+        <div aria-hidden="true" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none print:hidden">
           <AnimatedBackground />
         </div>
         
@@ -94,7 +81,7 @@ export default function HomePage() {
         <Suspense fallback={null}>
           <FloatingActionButton />
         </Suspense>
-      </main>
+      </div>
     </>
   )
 }
